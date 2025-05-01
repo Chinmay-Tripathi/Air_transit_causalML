@@ -1,71 +1,66 @@
-# Air_transit_causalML
-This is the repository to manage the mini project of CausalML for Air Transit Delay.
+# ✈️ Flight Transit Delay Analysis using Causal Machine Learning
 
+## 📌 Project Overview
 
-## ✈️ Flight Delay Prediction using Machine Learning
+This project investigates the causes of flight delays in U.S. domestic flights during 2019 using both traditional machine learning and **causal inference techniques**. While most models rely on correlation-based predictions, our goal is to uncover **true causal relationships** between variables like weather conditions, airport congestion, and scheduling, to better inform decisions in the aviation industry.
 
-This project focuses on predicting arrival delays of flights using machine learning algorithms. It uses a dataset containing detailed information about domestic flights, including carriers, departure/arrival times, delays, distance, and more.
+## 🎯 Objectives
+
+- Predict flight delays using operational and weather data.
+- Apply causal machine learning to identify true causes of delays.
+- Compare traditional ML models (Random Forest, XGBoost) with causal models (DoubleML, Causal Forests).
+- Offer interpretable and actionable insights for airlines and airport authorities.
+
+## 🛠️ Methodology
+
+1. **Data Preprocessing:** Cleaned and merged flight and weather datasets.
+2. **Feature Engineering:** Added derived features such as `departure_hour`, `arrival_hour`, and `is_weekend`.
+3. **Predictive Modeling:** Used Random Forest and XGBoost to establish performance baselines.
+4. **Causal Analysis:**
+   - Applied **DoWhy** for Average Treatment Effect (ATE) estimation.
+   - Implemented **Double Machine Learning (DoubleML)** for robust treatment effect estimation.
+   - Used **Causal Forests** to model heterogeneous treatment effects.
 
 ## 📊 Dataset
 
-The dataset used is from Kaggle's Flights Dataset, containing over 5 million records of U.S. domestic flights. Key features include:
+- **Source:** U.S. Domestic Flight Data (2019)
+- **Rows:** ~72,000
+- **Important Features:**
+  - `departure_delay`, `arrival_delay`
+  - `weather_conditions`, `airport_congestion`
+  - `departure_hour`, `weekday`, `is_weekend`
+  - Weather metrics: `HourlyPrecipitation`, `HourlyVisibility`, `HourlyWindSpeed`
 
-    carrier – Two-letter airline code
+## 📈 Results
 
-    origin / dest – Airport codes
+Causal models successfully identified features that **directly impact delays**, such as weather conditions and departure time. This provides **actionable insights** over traditional black-box models and enables data-driven planning and intervention by airlines and airport authorities.
 
-    dep_time / sched_dep_time – Actual and scheduled departure times
+## 🧰 Tools & Libraries
 
-    dep_delay / arr_delay – Departure and arrival delays (in minutes)
+- Python
+- pandas, numpy, matplotlib, seaborn
+- scikit-learn
+- XGBoost
+- [DoWhy](https://github.com/microsoft/dowhy)
+- [DoubleML](https://github.com/DoubleML/doubleml-for-py)
+- [EconML](https://github.com/microsoft/EconML)
 
-    distance – Flight distance
+## 🚀 How to Run
 
-    air_time – Actual flying time
+1. **Clone this repository:**
+   ```bash
+   git clone https://github.com/your-username/flight-delay-causal-ml.git
+   cd flight-delay-causal-ml
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
 
-## 🧹 Data Preprocessing & EDA
+3. **Run the code:**
+   ```bash
+   jupyter notebook FlightTransitDelay.ipynb
 
-    Handled missing values by filling or replacing with logical estimates
+## License
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
-    Imputed missing dep_time using sched_dep_time and set dep_delay to 0
-
-    Performed label encoding on categorical features (carrier, origin, dest)
-
-    Engineered new time-based features such as hour from sched_dep_time
-
-    Visualized delay distributions and correlation heatmaps for exploratory insights
-
-## 🤖 Machine Learning Models
-
-The following regression models were used to predict `arr_delay`:
-
-| Model              | MAE (↓) | R² Score (↑) |
-|--------------------|---------|--------------|
-| Random Forest      | 8.19    | 0.9471       |
-| Gradient Boosting  | 11.78   | 0.9067       |
-| XGBoost            | **5.22**| **0.9382**   |
-
-XGBoost performed the best with the lowest Mean Absolute Error and a high R² score, indicating a strong fit.
-
-## 📈 Goals
-
-    Predict flight arrival delays with high accuracy
-
-    Explore how different features influence delays
-
-    Compare performance across multiple ML models
-
-## 🛠️ Future Improvements
-
-    Hyperparameter tuning using GridSearchCV
-
-    Incorporating weather and air traffic data
-
-    Deploying the model with a web-based interface for real-time prediction
-
-## 📚 References
-
-    Kaggle: US DOT Flight Delay Dataset
-
-    Scikit-learn Documentation
-
-    XGBoost Python API
+## Auther
+Chinmay Tripathi
