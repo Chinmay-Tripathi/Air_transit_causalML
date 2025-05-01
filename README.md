@@ -24,7 +24,7 @@ This project investigates the causes of flight delays in U.S. domestic flights d
 ## 📊 Dataset
 
 - **Source:** U.S. Domestic Flight Data (2019)
-- **Rows:** ~72,000
+- **Rows:** ~15,00,000
 - **Important Features:**
   - `departure_delay`, `arrival_delay`
   - `weather_conditions`, `airport_congestion`
@@ -62,5 +62,5 @@ Causal models successfully identified features that **directly impact delays**, 
 ## License
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
-## Auther
+## Author
 Chinmay Tripathi
